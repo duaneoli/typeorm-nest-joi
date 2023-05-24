@@ -1,0 +1,80 @@
+{
+  "name": "@duaneoli/typeorm-nest-joi",
+  "version": "0.1.0",
+  "author": "Duane Oliveira",
+  "description": "Types end validador de variáveis de ambiente",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "react",
+    "typescript",
+    "types",
+    "environment",
+    "env"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@duaneoli/logger": "^0.1.0",
+    "joi": "^17.6.0",
+    "types-joi": "^2.1.0",
+    "typeorm": "^0.3.9"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "commitlint": "^17.1.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.3.5"
+  },
+  "scripts": {
+    "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
+    "build": "rm -rf dist/ && tsc",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "commit": "npx git-cz",
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\""
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "echo '>> Pre-commit checks' && lint-staged && yarn prettier"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duaneoli/types-env.git"
+  },
+  "bugs": {
+    "url": "https://github.com/duaneoli/types-env/issues"
+  },
+  "homepage": "https://github.com/duaneoli/types-env#readme"
+}
