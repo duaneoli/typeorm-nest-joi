@@ -71,10 +71,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duaneoli/types-env.git"
+    "url": "git+https://github.com/duaneoli/typeorm-nest-joi.git"
   },
   "bugs": {
-    "url": "https://github.com/duaneoli/types-env/issues"
+    "url": "https://github.com/duaneoli/typeorm-nest-joi/issues"
   },
-  "homepage": "https://github.com/duaneoli/types-env#readme"
+  "homepage": "https://github.com/duaneoli/typeorm-nest-joi#readme"
 }
