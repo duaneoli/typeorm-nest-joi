@@ -9,8 +9,8 @@ function deepObject(obj: any) {
   return obj
 }
 
-export function parseFilters<Entity>(filters: FilterToValueOperator<any>): FindOptionsWhere<Entity> | undefined {
-  if (!filters) return
+export function parseFilters<Entity>(filters: FilterToValueOperator<any>): FindOptionsWhere<Entity> {
+  if (!filters) return {}
   const object: Record<string, any> = {}
   for (let [k, v] of Object.entries(filters)) {
     object[k] = deepObject(v)
