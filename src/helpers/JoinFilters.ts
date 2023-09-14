@@ -3,7 +3,7 @@ import { FilterToValueOperator } from '../types'
 import { parseFilters } from './ParseFilters'
 
 export function JoinFilters<Entity>(filters: FindOptionsWhere<Entity>, filtersOr: FindOptionsWhere<Entity>): FindOptionsWhere<Entity>[] {
-  if (!filtersOr && Object.keys(filtersOr).length == 0) return [filters]
+  if (!filtersOr || Object.keys(filtersOr).length == 0) return [filters]
 
   return Object.entries(filtersOr).reduce((acc, [key, value]) => {
     acc.push({
