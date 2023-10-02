@@ -117,7 +117,9 @@ export class CustomRepository<Entity extends ObjectLiteral> extends Repository<E
       }, {} as Record<keyof Entity, 'ASC' | 'DESC'>),
     )
     Object.entries(sortBy).forEach(([key, value], index) => (index === 0 ? qr.orderBy(key, value) : qr.addOrderBy(key, value)))
-    const promises = [this.query(`select COUNT(*) as total_count from (${qrCount.getQuery()}) as subquery`), qr.getRawMany()]
+    let [subQuery, paramsSubQuery] = qrCount.getQueryAndParameters()
+    if (paramsSubQuery) paramsSubQuery.map((it, index) => (subQuery = subQuery.replaceAll(`$${index + 1}`, `'${it}'`)))
+    const promises = [this.query(`select COUNT(*) as total_count from (${subQuery}) as subquery`), qr.getRawMany()]
     const [count, entities] = await Promise.all(promises)
     const retEntities: Array<Entity> = this.replaceColumnNameDatabaseToEntities(entities)
     return [retEntities, Number(count[0].total_count)]
