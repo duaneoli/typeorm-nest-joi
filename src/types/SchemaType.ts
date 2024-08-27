@@ -41,6 +41,14 @@ export type SchemaType<T extends Record<string, any>> = {
 
 export type EntityColumnType = 'column' | 'filter' | 'sort'
 
+export type FilterOperator = 'equals' | 'not';
+
+export type FilterValue =  {
+  value: string | number;
+  operator: FilterOperator;
+}
+
+
 export type ValueOperator = { value: any; operator?: Operator }
 
 export type ToValueOperator<T> = T extends Record<string, any> ? FilterToValueOperator<T> : ValueOperator[]
