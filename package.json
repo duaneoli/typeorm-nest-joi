@@ -1,6 +1,6 @@
 {
   "name": "@duaneoli/typeorm-nest-joi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Duane Oliveira",
   "description": "Types end validador de variáveis de ambiente",
   "main": "dist/index.js",
